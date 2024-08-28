@@ -28,23 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_Ingresar = new System.Windows.Forms.Button();
+            System.Windows.Forms.Label lbl_Contraseña;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.btn_IniciarSesion = new System.Windows.Forms.Button();
             this.lbl_Usuario = new System.Windows.Forms.Label();
-            this.lbl_Contraseña = new System.Windows.Forms.Label();
             this.txt_Usuario = new System.Windows.Forms.TextBox();
             this.txt_Contraseña = new System.Windows.Forms.TextBox();
+            lbl_Contraseña = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // btn_Ingresar
+            // btn_IniciarSesion
             // 
-            this.btn_Ingresar.BackColor = System.Drawing.Color.Lime;
-            this.btn_Ingresar.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Ingresar.Location = new System.Drawing.Point(136, 203);
-            this.btn_Ingresar.Name = "btn_Ingresar";
-            this.btn_Ingresar.Size = new System.Drawing.Size(103, 39);
-            this.btn_Ingresar.TabIndex = 0;
-            this.btn_Ingresar.Text = "Ingresar";
-            this.btn_Ingresar.UseVisualStyleBackColor = false;
+            this.btn_IniciarSesion.BackColor = System.Drawing.Color.Lime;
+            this.btn_IniciarSesion.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_IniciarSesion.Location = new System.Drawing.Point(136, 203);
+            this.btn_IniciarSesion.Name = "btn_IniciarSesion";
+            this.btn_IniciarSesion.Size = new System.Drawing.Size(103, 39);
+            this.btn_IniciarSesion.TabIndex = 0;
+            this.btn_IniciarSesion.Text = "Iniciar Sesion";
+            this.btn_IniciarSesion.UseVisualStyleBackColor = false;
+            this.btn_IniciarSesion.Click += new System.EventHandler(this.btn_IniciarSesion_Click);
             // 
             // lbl_Usuario
             // 
@@ -58,13 +61,13 @@
             // 
             // lbl_Contraseña
             // 
-            this.lbl_Contraseña.AutoSize = true;
-            this.lbl_Contraseña.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Contraseña.Location = new System.Drawing.Point(147, 108);
-            this.lbl_Contraseña.Name = "lbl_Contraseña";
-            this.lbl_Contraseña.Size = new System.Drawing.Size(77, 17);
-            this.lbl_Contraseña.TabIndex = 2;
-            this.lbl_Contraseña.Text = "Contraseña";
+            lbl_Contraseña.AutoSize = true;
+            lbl_Contraseña.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            lbl_Contraseña.Location = new System.Drawing.Point(147, 108);
+            lbl_Contraseña.Name = "lbl_Contraseña";
+            lbl_Contraseña.Size = new System.Drawing.Size(77, 17);
+            lbl_Contraseña.TabIndex = 2;
+            lbl_Contraseña.Text = "Contraseña";
             // 
             // txt_Usuario
             // 
@@ -87,13 +90,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(382, 263);
             this.Controls.Add(this.txt_Contraseña);
             this.Controls.Add(this.txt_Usuario);
-            this.Controls.Add(this.lbl_Contraseña);
+            this.Controls.Add(lbl_Contraseña);
             this.Controls.Add(this.lbl_Usuario);
-            this.Controls.Add(this.btn_Ingresar);
+            this.Controls.Add(this.btn_IniciarSesion);
             this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Inventario de motores";
@@ -104,9 +108,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_Ingresar;
+        private System.Windows.Forms.Button btn_IniciarSesion;
         private System.Windows.Forms.Label lbl_Usuario;
-        private System.Windows.Forms.Label lbl_Contraseña;
         private System.Windows.Forms.TextBox txt_Usuario;
         private System.Windows.Forms.TextBox txt_Contraseña;
     }

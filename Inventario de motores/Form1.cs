@@ -16,5 +16,10 @@ namespace Inventario_de_motores
         {
             InitializeComponent();
         }
+
+        private void btn_IniciarSesion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
