@@ -58,6 +58,24 @@
     <Compile Include="Menu Principal.Designer.cs">
       <DependentUpon>Menu Principal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Motores de clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Motores de clientes.Designer.cs">
+      <DependentUpon>Motores de clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Motores de linea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Motores de linea.Designer.cs">
+      <DependentUpon>Motores de linea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Motores domiciliarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Motores domiciliarios.Designer.cs">
+      <DependentUpon>Motores domiciliarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
