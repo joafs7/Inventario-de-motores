@@ -37,6 +37,7 @@
             // btn_MotoresLinea
             // 
             this.btn_MotoresLinea.BackColor = System.Drawing.Color.Lime;
+            this.btn_MotoresLinea.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_MotoresLinea.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_MotoresLinea.Location = new System.Drawing.Point(65, 35);
             this.btn_MotoresLinea.Name = "btn_MotoresLinea";
@@ -48,6 +49,7 @@
             // btn_MotoresClientes
             // 
             this.btn_MotoresClientes.BackColor = System.Drawing.Color.Lime;
+            this.btn_MotoresClientes.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_MotoresClientes.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_MotoresClientes.Location = new System.Drawing.Point(68, 130);
             this.btn_MotoresClientes.Name = "btn_MotoresClientes";
@@ -59,6 +61,7 @@
             // btn_MotoresDomiciliarios
             // 
             this.btn_MotoresDomiciliarios.BackColor = System.Drawing.Color.Lime;
+            this.btn_MotoresDomiciliarios.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_MotoresDomiciliarios.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_MotoresDomiciliarios.Location = new System.Drawing.Point(68, 236);
             this.btn_MotoresDomiciliarios.Name = "btn_MotoresDomiciliarios";
@@ -70,6 +73,7 @@
             // btn_CerrarSesion
             // 
             this.btn_CerrarSesion.BackColor = System.Drawing.Color.Red;
+            this.btn_CerrarSesion.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_CerrarSesion.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_CerrarSesion.Location = new System.Drawing.Point(68, 342);
             this.btn_CerrarSesion.Name = "btn_CerrarSesion";
