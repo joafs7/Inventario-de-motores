@@ -46,6 +46,7 @@
             this.btn_MotoresLinea.TabIndex = 0;
             this.btn_MotoresLinea.Text = "Motores de linea";
             this.btn_MotoresLinea.UseVisualStyleBackColor = false;
+            this.btn_MotoresLinea.Click += new System.EventHandler(this.btn_MotoresLinea_Click);
             // 
             // btn_MotoresClientes
             // 
@@ -90,6 +91,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1357, 796);
             this.Controls.Add(this.btn_CerrarSesion);

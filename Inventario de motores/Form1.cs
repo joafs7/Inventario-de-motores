@@ -22,11 +22,24 @@ namespace Inventario_de_motores
 
        public SqlConnection Conexion = new SqlConnection("Data Source=JOAQUIN;Initial Catalog=Gatti_DB;Integrated Security=True;Encrypt=False");
 
+      /*  private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }*/
       private void btn_IniciarSesion_Click(object sender, EventArgs e)
         {
 
             string usuario = txt_Usuario.Text;
-            string contrasena =txt_Contrasena.Text;
+            string contrasena = (txt_Contrasena.Text);
 
             using (SqlConnection conn = new SqlConnection("Data Source=JOAQUIN;Initial Catalog=Gatti_DB;Integrated Security=True;Encrypt=False"))
             {
@@ -70,7 +83,7 @@ namespace Inventario_de_motores
             }
 
             string usuario = txt_Usuario.Text;
-            string contraseña = txt_Contrasena.Text;
+            string contraseña = (txt_Contrasena.Text);
 
             using (SqlConnection conn = new SqlConnection("Data Source=JOAQUIN;Initial Catalog=Gatti_DB;Integrated Security=True;Encrypt=False"))
             {

@@ -16,5 +16,12 @@ namespace Inventario_de_motores
         {
             InitializeComponent();
         }
+
+        private void btn_MotoresLinea_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Motores_de_linea motores_De_Linea = new Motores_de_linea();
+            motores_De_Linea.Show();
+        }
     }
 }
