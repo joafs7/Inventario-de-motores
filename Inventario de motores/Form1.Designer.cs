@@ -34,7 +34,7 @@
             this.lbl_Usuario = new System.Windows.Forms.Label();
             this.txt_Usuario = new System.Windows.Forms.TextBox();
             this.txt_Contrasena = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_crearUsuario = new System.Windows.Forms.Button();
             lbl_Contraseña = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -94,17 +94,18 @@
             this.txt_Contrasena.Size = new System.Drawing.Size(518, 55);
             this.txt_Contrasena.TabIndex = 4;
             // 
-            // button1
+            // btn_crearUsuario
             // 
-            this.button1.BackColor = System.Drawing.Color.Lime;
-            this.button1.Font = new System.Drawing.Font("Malgun Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(597, 640);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(311, 60);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Crear Usuario";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_crearUsuario.BackColor = System.Drawing.Color.Lime;
+            this.btn_crearUsuario.Font = new System.Drawing.Font("Malgun Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_crearUsuario.Location = new System.Drawing.Point(597, 640);
+            this.btn_crearUsuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_crearUsuario.Name = "btn_crearUsuario";
+            this.btn_crearUsuario.Size = new System.Drawing.Size(311, 60);
+            this.btn_crearUsuario.TabIndex = 5;
+            this.btn_crearUsuario.Text = "Crear Usuario";
+            this.btn_crearUsuario.UseVisualStyleBackColor = false;
+            this.btn_crearUsuario.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -113,7 +114,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1357, 796);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_crearUsuario);
             this.Controls.Add(this.txt_Contrasena);
             this.Controls.Add(this.txt_Usuario);
             this.Controls.Add(lbl_Contraseña);
@@ -134,7 +135,7 @@
         private System.Windows.Forms.Label lbl_Usuario;
         private System.Windows.Forms.TextBox txt_Usuario;
         private System.Windows.Forms.TextBox txt_Contrasena;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_crearUsuario;
     }
 }
 
