@@ -51,6 +51,8 @@
             this.lbl_Hz = new System.Windows.Forms.Label();
             this.gbx_Filtro = new System.Windows.Forms.GroupBox();
             this.txt_Filtro = new System.Windows.Forms.TextBox();
+            this.btn_Imprimir = new System.Windows.Forms.Button();
+            this.btn_ExportarPDF = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Linea)).BeginInit();
             this.gbx_Filtro.SuspendLayout();
             this.SuspendLayout();
@@ -358,7 +360,7 @@
             // gbx_Filtro
             // 
             this.gbx_Filtro.BackColor = System.Drawing.Color.Transparent;
-            this.gbx_Filtro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.gbx_Filtro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.gbx_Filtro.Controls.Add(this.txt_Filtro);
             this.gbx_Filtro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbx_Filtro.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -381,12 +383,40 @@
             this.txt_Filtro.Text = "Buscar...";
             this.txt_Filtro.TextChanged += new System.EventHandler(this.txt_Filtro_TextChanged);
             // 
+            // btn_Imprimir
+            // 
+            this.btn_Imprimir.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Imprimir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Imprimir.BackgroundImage")));
+            this.btn_Imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Imprimir.Location = new System.Drawing.Point(1528, 384);
+            this.btn_Imprimir.Name = "btn_Imprimir";
+            this.btn_Imprimir.Size = new System.Drawing.Size(184, 91);
+            this.btn_Imprimir.TabIndex = 21;
+            this.btn_Imprimir.UseVisualStyleBackColor = false;
+            this.btn_Imprimir.Click += new System.EventHandler(this.btn_Imprimir_Click);
+            // 
+            // btn_ExportarPDF
+            // 
+            this.btn_ExportarPDF.BackColor = System.Drawing.Color.Transparent;
+            this.btn_ExportarPDF.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_ExportarPDF.BackgroundImage")));
+            this.btn_ExportarPDF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_ExportarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ExportarPDF.Location = new System.Drawing.Point(1528, 559);
+            this.btn_ExportarPDF.Name = "btn_ExportarPDF";
+            this.btn_ExportarPDF.Size = new System.Drawing.Size(184, 91);
+            this.btn_ExportarPDF.TabIndex = 22;
+            this.btn_ExportarPDF.UseVisualStyleBackColor = false;
+            this.btn_ExportarPDF.Click += new System.EventHandler(this.btn_ExportarPDF_Click);
+            // 
             // Motores_de_linea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1522, 951);
+            this.ClientSize = new System.Drawing.Size(1724, 1050);
+            this.Controls.Add(this.btn_ExportarPDF);
+            this.Controls.Add(this.btn_Imprimir);
             this.Controls.Add(this.gbx_Filtro);
             this.Controls.Add(this.cbx_Hz);
             this.Controls.Add(this.lbl_Hz);
@@ -445,5 +475,7 @@
         private System.Windows.Forms.Label lbl_Hz;
         private System.Windows.Forms.GroupBox gbx_Filtro;
         private System.Windows.Forms.TextBox txt_Filtro;
+        private System.Windows.Forms.Button btn_Imprimir;
+        private System.Windows.Forms.Button btn_ExportarPDF;
     }
 }

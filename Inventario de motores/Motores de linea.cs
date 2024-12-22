@@ -3,14 +3,27 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+
 
 namespace Inventario_de_motores
 {
     public partial class Motores_de_linea : Form
     {
+        private PrintDocument printDocument = new PrintDocument();
+        private int currentRow = 0;
         public Motores_de_linea()
         {
+
             InitializeComponent();
+            // Configurar el evento para imprimir
+            printDocument.BeginPrint += PrintDocument_BeginPrint;
+            printDocument.PrintPage += PrintDocument_PrintPage;
+
         }
         public string guardar = "Nuevo";
         public int codigo;
@@ -284,6 +297,124 @@ namespace Inventario_de_motores
             finally
             {
                 Conexion.Close();
+            }
+        }
+
+        private void btn_Imprimir_Click(object sender, EventArgs e)
+        {
+            PrintPreviewDialog previewDialog = new PrintPreviewDialog();
+            previewDialog.Document = printDocument;
+            previewDialog.ShowDialog();
+        }
+         private void PrintDocument_BeginPrint(object sender, PrintEventArgs e)
+         {
+            currentRow = 0; // Reiniciar la fila actual
+         }
+
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            int x = 50; // Margen izquierdo
+            int y = 50; // Margen superior
+            int rowHeight = 25; // Altura de las filas
+            int colWidth = 100; // Ancho de las columnas
+            int maxRowsPerPage = (e.MarginBounds.Height - y) / rowHeight;
+
+            System.Drawing.Font headerFont = new System.Drawing.Font("Arial", 10, FontStyle.Bold);
+            System.Drawing.Font rowFont = new System.Drawing.Font("Arial", 9, FontStyle.Regular);
+
+            // Dibujar los encabezados de columna
+            for (int col = 0; col < dgv_Linea.Columns.Count; col++)
+            {
+                e.Graphics.DrawString(dgv_Linea.Columns[col].HeaderText, headerFont, Brushes.Black, x + (col * colWidth), y);
+            }
+
+            y += rowHeight;
+
+            // Dibujar las filas de datos
+            for (; currentRow < dgv_Linea.Rows.Count; currentRow++)
+            {
+                if (y + rowHeight > e.MarginBounds.Bottom)
+                {
+                    e.HasMorePages = true;
+                    return; // Salir para continuar en la siguiente página
+                }
+
+                for (int col = 0; col < dgv_Linea.Columns.Count; col++)
+                {
+                    string cellValue = dgv_Linea.Rows[currentRow].Cells[col].Value?.ToString() ?? "";
+                    e.Graphics.DrawString(cellValue, rowFont, Brushes.Black, x + (col * colWidth), y);
+                }
+
+                y += rowHeight;
+            }
+
+            e.HasMorePages = false;
+        }
+
+        private void btn_ExportarPDF_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Archivo PDF|*.pdf",
+                Title = "Guardar como PDF",
+                FileName = "DataGridViewExport.pdf"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                ExportarPDF(saveFileDialog.FileName);
+            }
+        }
+        private void ExportarPDF(string nombreArchivo)
+        {
+            Document documento = new Document(PageSize.A4, 10, 10, 10, 10);
+
+            try
+            {
+                PdfWriter.GetInstance(documento, new FileStream(nombreArchivo, FileMode.Create));
+                documento.Open();
+
+                // Título
+                documento.Add(new Paragraph("Motores de linea"));
+                documento.Add(new Paragraph(" ")); // Espacio en blanco
+
+                PdfPTable tabla = new PdfPTable(dgv_Linea.Columns.Count);
+                tabla.WidthPercentage = 100;
+
+                // Encabezados
+                foreach (DataGridViewColumn columna in dgv_Linea.Columns)
+                {
+                    PdfPCell celda = new PdfPCell(new Phrase(columna.HeaderText))
+                    {
+                        BackgroundColor = BaseColor.LIGHT_GRAY,
+                        HorizontalAlignment = Element.ALIGN_CENTER
+                    };
+                    tabla.AddCell(celda);
+                }
+
+                // Filas
+                foreach (DataGridViewRow fila in dgv_Linea.Rows)
+                {
+                    if (!fila.IsNewRow)
+                    {
+                        foreach (DataGridViewCell celda in fila.Cells)
+                        {
+                            string textoCelda = celda.Value?.ToString() ?? "";
+                            tabla.AddCell(new Phrase(textoCelda));
+                        }
+                    }
+                }
+
+                documento.Add(tabla);
+                MessageBox.Show("Archivo PDF generado exitosamente.", "Éxito");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar el archivo PDF: " + ex.Message, "Error");
+            }
+            finally
+            {
+                documento.Close();
             }
         }
     }
