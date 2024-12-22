@@ -23,5 +23,12 @@ namespace Inventario_de_motores
             Motores_de_linea motores_De_Linea = new Motores_de_linea();
             motores_De_Linea.Show();
         }
+
+        private void btn_MotoresClientes_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Motores_de_clientes motores_De_Clientes = new Motores_de_clientes();
+            motores_De_Clientes.Show();
+        }
     }
 }

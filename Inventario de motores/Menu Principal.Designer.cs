@@ -60,6 +60,7 @@
             this.btn_MotoresClientes.TabIndex = 1;
             this.btn_MotoresClientes.Text = "Motores de clientes";
             this.btn_MotoresClientes.UseVisualStyleBackColor = false;
+            this.btn_MotoresClientes.Click += new System.EventHandler(this.btn_MotoresClientes_Click);
             // 
             // btn_MotoresDomiciliarios
             // 
