@@ -408,6 +408,7 @@
             this.Name = "Motores_de_linea";
             this.ShowIcon = false;
             this.Text = "Motores_de_linea";
+            this.Load += new System.EventHandler(this.Motores_de_linea_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Linea)).EndInit();
             this.gbx_Filtro.ResumeLayout(false);
             this.gbx_Filtro.PerformLayout();

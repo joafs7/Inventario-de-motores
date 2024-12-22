@@ -1,13 +1,6 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Inventario_de_motores
@@ -32,15 +25,15 @@ namespace Inventario_de_motores
             btn_Guardar.Enabled = true;
 
             //habilitamos cajas de textos
-            txt_Cantidad.Enabled=true;
-            cbx_Marca.Enabled=true;
-            cbx_HP.Enabled=true;
-            cbx_RPM.Enabled=true;
-            cbx_Cuerpo.Enabled=true;
-            cbx_Hz.Enabled=true;
-            cbx_Volts.Enabled=true;
-            
+            txt_Cantidad.Enabled = true;
+            cbx_Marca.Enabled = true;
+            cbx_HP.Enabled = true;
+            cbx_RPM.Enabled = true;
+            cbx_Cuerpo.Enabled = true;
+            cbx_Hz.Enabled = true;
+            cbx_Volts.Enabled = true;
 
+         
         }
         private void label1_Click(object sender, EventArgs e)
         {
@@ -111,72 +104,98 @@ namespace Inventario_de_motores
             string volts = cbx_Volts.Text;
             string hz = cbx_Hz.Text;
 
-            using (SqlConnection conn = new SqlConnection("Data Source=JOAQUIN;Initial Catalog=Gatti_DB;Integrated Security=True;Encrypt=False"))
+
+            Conexion.Open();
+            try
             {
-                conn.Open();
-                try
+                SqlCommand comandoSQL;
+                if (guardar == "Nuevo")
                 {
-                    SqlCommand comandoSQL;
-                    if (guardar == "Nuevo")
-                    {
-                        comandoSQL = new SqlCommand("INSERT INTO motorDeLinea (marca,hp,rpm,cantidad,cuerpo,volts,hz)" + "VALUES (@Marca,@HP,@RPM,@Cantidad,@Cuerpo,@Volts,@Hz)", conn);
-                        comandoSQL.Parameters.AddWithValue("@Marca", marca);
-                        comandoSQL.Parameters.AddWithValue("@HP", hp);
-                        comandoSQL.Parameters.AddWithValue("@RPM", rpm);
-                        comandoSQL.Parameters.AddWithValue("@Cantidad", cantidad);
-                        comandoSQL.Parameters.AddWithValue("@Cuerpo", cuerpo);
-                        comandoSQL.Parameters.AddWithValue("@Volts", volts);
-                        comandoSQL.Parameters.AddWithValue("@Hz", hz);
-                        codigo = Convert.ToInt32(comandoSQL.ExecuteScalar());
-                        comandoSQL.ExecuteNonQuery();
-                        MessageBox.Show("Cargado correctamente");
+                    comandoSQL = new SqlCommand("INSERT INTO motorDeLinea (marca,hp,rpm,cantidad,cuerpo,volts,hz)" + "VALUES (@Marca,@HP,@RPM,@Cantidad,@Cuerpo,@Volts,@Hz)", Conexion);
+                    comandoSQL.Parameters.AddWithValue("@Marca", marca);
+                    comandoSQL.Parameters.AddWithValue("@HP", hp);
+                    comandoSQL.Parameters.AddWithValue("@RPM", rpm);
+                    comandoSQL.Parameters.AddWithValue("@Cantidad", cantidad);
+                    comandoSQL.Parameters.AddWithValue("@Cuerpo", cuerpo);
+                    comandoSQL.Parameters.AddWithValue("@Volts", volts);
+                    comandoSQL.Parameters.AddWithValue("@Hz", hz);
+                    //codigo = Convert.ToInt32(comandoSQL.ExecuteScalar());
+                    comandoSQL.ExecuteNonQuery();
+                    MessageBox.Show("Cargado correctamente");
 
-                    }
-                    /* else if (guardar == "Modificar")
-                   {
-                        comandoSQL = new SqlCommand("UPDATE motorDeLinea SET usuario=@usuario,contrasena=@contrasena,estado=@estado WHERE id_administrador=@id", Conexion);
-                        comandoSQL.Parameters.AddWithValue("@usuario", usuario);
-                        comandoSQL.Parameters.AddWithValue("@contrasena", contraseña);
-                        comandoSQL.Parameters.AddWithValue("@estado", estado);
-                        comandoSQL.Parameters.AddWithValue("@id", id);
-                        comandoSQL.ExecuteNonQuery();
-                        MessageBox.Show("Administrador actualizado exitosamente");
-
-                    }*/
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("ERROR:" + ex.Message, "ERROR");
-                }
-                finally
-                {
+                else if (guardar == "Modificar")
+               {
+                    comandoSQL = new SqlCommand("UPDATE motorDeLinea SET marca=@Marca, hp=@HP, rpm=@RPM, cantidad=@Cantidad, cuerpo=@Cuerpo, volts+@Volts, hz=@Hz WHERE codigo=@Codigo", Conexion);
+                    comandoSQL.Parameters.AddWithValue("@Marca", marca);
+                    comandoSQL.Parameters.AddWithValue("@HP", hp);
+                    comandoSQL.Parameters.AddWithValue("@RPM", rpm);
+                    comandoSQL.Parameters.AddWithValue("@Cantidad", cantidad);
+                    comandoSQL.Parameters.AddWithValue("@Cuerpo", cuerpo);
+                    comandoSQL.Parameters.AddWithValue("@Volts", volts);
+                    comandoSQL.Parameters.AddWithValue("@Hz", hz);
+                    comandoSQL.Parameters.AddWithValue("@Codigo", codigo);
+                    comandoSQL.ExecuteNonQuery();
+                    MessageBox.Show("Motores actualizados exitosamente");
 
-                    Conexion.Close();
-                    //EstadoInicial();
-                    CargarGrilla();
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR:" + ex.Message, "ERROR");
+            }
+            finally
+            {
+
+                Conexion.Close();
+                LimpiarCampos();
+                CargarGrilla();
+            }
         }
+
         private void CargarGrilla()
         {
-            using (SqlConnection conn = new SqlConnection("Data Source=JOAQUIN;Initial Catalog=Gatti_DB;Integrated Security=True;Encrypt=False"))
+            try
             {
-                conn.Open(); // Abrimos la conexión
-
-                // Creamos el comando SQL para consultar los datos
-                SqlCommand comando = new SqlCommand("SELECT * FROM motorDeLinea", conn);
-
-                // Adaptador para llenar los datos en un DataTable
-                SqlDataAdapter adapter = new SqlDataAdapter(comando);
-                DataTable datos_grilla = new DataTable();
-                adapter.Fill(datos_grilla);
-
-                // Vinculamos los datos al DataGridView
-                dgv_Linea.DataSource = datos_grilla;
-
                 
+
+                Conexion.Open();
+
+                // Consulta SQL
+                string consultaSQL = "SELECT * FROM motorDeLinea";
+                SqlCommand comando = new SqlCommand(consultaSQL, Conexion);
+
+                // Cargar datos en DataTable
+                SqlDataAdapter adapter = new SqlDataAdapter(comando);
+                DataTable datosGrilla = new DataTable();
+                adapter.Fill(datosGrilla);
+
+                // Asignar datos al DataGridView
+                dgv_Linea.DataSource = datosGrilla;
+                Conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar los datos en la grilla: {ex.Message}", "Error");
             }
         }
+        private void LimpiarCampos()
+        {
+            txt_Cantidad.Text = string.Empty;
+            cbx_Marca.SelectedIndex = 0;
+            cbx_HP.SelectedIndex = 0;
+            cbx_RPM.SelectedIndex = 0;
+            cbx_Cuerpo.SelectedIndex = 0;
+            cbx_Hz.SelectedIndex = 0;
+            cbx_Volts.SelectedIndex = 0;
+        }
+
+
+        private void Motores_de_linea_Load(object sender, EventArgs e)
+        {
+            CargarGrilla();
+            LimpiarCampos();
+        }
     }
-    
+
 }
