@@ -247,7 +247,45 @@ namespace Inventario_de_motores
             LimpiarCampos();
         }
 
-        
+        private void btn_Volver_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menu_Principal menu_Principal = new Menu_Principal();
+            menu_Principal.Show();
+        }
+
+        private void txt_Filtro_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Conexion.Open();
+
+                // Captura el texto en el textbox
+                string filtro = txt_Filtro.Text;
+
+                // Crea la consulta SQL con el filtro 
+                string consulta = "SELECT * FROM motorDeLinea WHERE HP LIKE @filtro";
+                SqlCommand comandoSQL = new SqlCommand(consulta, Conexion);
+                comandoSQL.Parameters.AddWithValue("@filtro", "%" + filtro + "%");
+
+                //Ejecuta la consulta y obtiene los resultados
+                SqlDataAdapter adaptor = new SqlDataAdapter(comandoSQL);
+                DataTable tablaResultados = new DataTable();
+                adaptor.Fill(tablaResultados);
+
+                //Muestra los resultados de la DataGridView
+                dgv_Linea.DataSource = tablaResultados;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error: " + ex.Message, "Error");
+            }
+            finally
+            {
+                Conexion.Close();
+            }
+        }
     }
 
 }

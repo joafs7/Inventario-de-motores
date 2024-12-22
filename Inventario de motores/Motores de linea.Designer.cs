@@ -118,6 +118,7 @@
             this.btn_Volver.TabIndex = 4;
             this.btn_Volver.Text = "Volver";
             this.btn_Volver.UseVisualStyleBackColor = false;
+            this.btn_Volver.Click += new System.EventHandler(this.btn_Volver_Click);
             // 
             // lbl_Marca
             // 
@@ -378,6 +379,7 @@
             this.txt_Filtro.Size = new System.Drawing.Size(445, 33);
             this.txt_Filtro.TabIndex = 0;
             this.txt_Filtro.Text = "Buscar...";
+            this.txt_Filtro.TextChanged += new System.EventHandler(this.txt_Filtro_TextChanged);
             // 
             // Motores_de_linea
             // 
