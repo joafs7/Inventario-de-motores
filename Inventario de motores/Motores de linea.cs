@@ -34,8 +34,8 @@ namespace Inventario_de_motores
             //Nuevo="Nuevo"
             //habilitamos botones 
 
-            btn_Modificar.Enabled = false;
-            btn_Eliminar.Enabled = false;
+            btn_Modificar.Enabled = true;
+            btn_Eliminar.Enabled = true;
             btn_Guardar.Enabled = true;
 
             //habilitamos cajas de textos
