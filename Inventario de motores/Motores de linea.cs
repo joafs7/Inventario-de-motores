@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -119,14 +120,13 @@ namespace Inventario_de_motores
                     comandoSQL.Parameters.AddWithValue("@Cuerpo", cuerpo);
                     comandoSQL.Parameters.AddWithValue("@Volts", volts);
                     comandoSQL.Parameters.AddWithValue("@Hz", hz);
-                    //codigo = Convert.ToInt32(comandoSQL.ExecuteScalar());
                     comandoSQL.ExecuteNonQuery();
                     MessageBox.Show("Cargado correctamente");
 
                 }
                 else if (guardar == "Modificar")
                {
-                    comandoSQL = new SqlCommand("UPDATE motorDeLinea SET marca=@Marca, hp=@HP, rpm=@RPM, cantidad=@Cantidad, cuerpo=@Cuerpo, volts+@Volts, hz=@Hz WHERE codigo=@Codigo", Conexion);
+                    comandoSQL = new SqlCommand("UPDATE motorDeLinea SET marca=@Marca, hp=@HP, rpm=@RPM, cantidad=@Cantidad, cuerpo=@Cuerpo, volts=@Volts, hz=@Hz WHERE codigo=@Codigo", Conexion);
                     comandoSQL.Parameters.AddWithValue("@Marca", marca);
                     comandoSQL.Parameters.AddWithValue("@HP", hp);
                     comandoSQL.Parameters.AddWithValue("@RPM", rpm);
@@ -179,6 +179,56 @@ namespace Inventario_de_motores
                 MessageBox.Show($"Error al cargar los datos en la grilla: {ex.Message}", "Error");
             }
         }
+         private void btn_Modificar_Click(object sender, EventArgs e)
+         {
+            if (dgv_Linea.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dgv_Linea.SelectedRows)
+                {
+                    codigo = Convert.ToInt32(row.Cells["Codigo"].Value); // Capturamos el ID del cliente seleccionado
+                    cbx_Marca.Text = row.Cells["Marca"].Value.ToString();
+                    cbx_HP.Text = row.Cells["HP"].Value.ToString();
+                    cbx_RPM.Text = row.Cells["RPM"].Value.ToString();
+                    cbx_Cuerpo.Text = row.Cells["Cuerpo"].Value.ToString();
+                    txt_Cantidad.Text = row.Cells["Cantidad"].Value.ToString();
+                    cbx_Volts.Text = row.Cells["Volts"].Value.ToString();
+                    cbx_Hz.Text = row.Cells["Hz"].Value.ToString();
+                    guardar = "Modificar";
+                    Nuevo();
+                }
+
+            }
+            else
+            {
+                //No hay filas seleccionadas
+                MessageBox.Show("Debe seleccionar un 'MOTOR'", "Seleccione");
+            }
+        }
+
+        private void btn_Eliminar_Click(object sender, EventArgs e)
+        {
+            if (dgv_Linea.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dgv_Linea.SelectedRows)
+                {
+                    int codigo = Convert.ToInt32(row.Cells["Codigo"].Value);
+
+                    Conexion.Open();
+                    SqlCommand comandoSQL;
+                    comandoSQL = new SqlCommand("DELETE FROM motorDeLinea WHERE codigo = @Codigo", Conexion);
+                    comandoSQL.Parameters.AddWithValue("@Codigo", codigo);
+                    comandoSQL.ExecuteNonQuery();
+                    Conexion.Close();
+                    CargarGrilla();
+                    MessageBox.Show("Motores eliminado exitosamente", "Eliminacion");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar Motores", "Seleccione");
+            }
+        }
+
         private void LimpiarCampos()
         {
             txt_Cantidad.Text = string.Empty;
@@ -196,6 +246,8 @@ namespace Inventario_de_motores
             CargarGrilla();
             LimpiarCampos();
         }
+
+        
     }
 
 }
