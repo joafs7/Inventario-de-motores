@@ -81,9 +81,11 @@
     </Compile>
     <Compile Include="Motores de linea.cs">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Motores de linea.Designer.cs">
       <DependentUpon>Motores de linea.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Motores domiciliarios.cs">
       <SubType>Form</SubType>
@@ -104,6 +106,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Motores de linea.resx">
       <DependentUpon>Motores de linea.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
