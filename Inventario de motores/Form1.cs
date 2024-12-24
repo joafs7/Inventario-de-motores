@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace Inventario_de_motores
@@ -18,7 +19,13 @@ namespace Inventario_de_motores
         public Form1()
         {
             InitializeComponent();
+            // Establecer el tamaño dinámico para un TextBox
+            txt_Usuario.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txt_Contrasena.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lbl_Usuario.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+       
         }
+        
 
        public SqlConnection Conexion = new SqlConnection("Data Source=JOAQUIN;Initial Catalog=Gatti_DB;Integrated Security=True;Encrypt=False");
 

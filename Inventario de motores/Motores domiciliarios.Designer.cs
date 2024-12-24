@@ -337,7 +337,7 @@
             // 
             this.btn_ExportarPDF.BackColor = System.Drawing.Color.White;
             this.btn_ExportarPDF.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_ExportarPDF.BackgroundImage")));
-            this.btn_ExportarPDF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_ExportarPDF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_ExportarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ExportarPDF.Location = new System.Drawing.Point(1528, 743);
             this.btn_ExportarPDF.Name = "btn_ExportarPDF";

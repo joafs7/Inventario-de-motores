@@ -40,7 +40,6 @@
             // 
             // lbl_Contraseña
             // 
-            lbl_Contraseña.AutoSize = true;
             lbl_Contraseña.BackColor = System.Drawing.Color.Transparent;
             lbl_Contraseña.Font = new System.Drawing.Font("Malgun Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             lbl_Contraseña.Location = new System.Drawing.Point(619, 347);
@@ -65,7 +64,6 @@
             // 
             // lbl_Usuario
             // 
-            this.lbl_Usuario.AutoSize = true;
             this.lbl_Usuario.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Usuario.Font = new System.Drawing.Font("Malgun Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Usuario.Location = new System.Drawing.Point(646, 196);
@@ -77,6 +75,7 @@
             // 
             // txt_Usuario
             // 
+            this.txt_Usuario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Usuario.Font = new System.Drawing.Font("Malgun Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Usuario.Location = new System.Drawing.Point(481, 270);
             this.txt_Usuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -87,6 +86,7 @@
             // txt_Contrasena
             // 
             this.txt_Contrasena.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.txt_Contrasena.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Contrasena.Font = new System.Drawing.Font("Malgun Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Contrasena.Location = new System.Drawing.Point(481, 420);
             this.txt_Contrasena.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -112,7 +112,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1357, 796);
             this.Controls.Add(this.btn_crearUsuario);
             this.Controls.Add(this.txt_Contrasena);
