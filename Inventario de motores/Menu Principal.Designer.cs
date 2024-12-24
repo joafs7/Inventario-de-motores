@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu_Principal));
             this.btn_MotoresLinea = new System.Windows.Forms.Button();
             this.btn_MotoresClientes = new System.Windows.Forms.Button();
             this.btn_MotoresDomiciliarios = new System.Windows.Forms.Button();
@@ -74,6 +75,7 @@
             this.btn_MotoresDomiciliarios.TabIndex = 2;
             this.btn_MotoresDomiciliarios.Text = "Motores Domiciliarios";
             this.btn_MotoresDomiciliarios.UseVisualStyleBackColor = false;
+            this.btn_MotoresDomiciliarios.Click += new System.EventHandler(this.btn_MotoresDomiciliarios_Click);
             // 
             // btn_CerrarSesion
             // 
@@ -93,6 +95,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1357, 796);
             this.Controls.Add(this.btn_CerrarSesion);

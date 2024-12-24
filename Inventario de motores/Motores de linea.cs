@@ -245,12 +245,12 @@ namespace Inventario_de_motores
         private void LimpiarCampos()
         {
             txt_Cantidad.Text = string.Empty;
-            cbx_Marca.SelectedIndex = 0;
-            cbx_HP.SelectedIndex = 0;
-            cbx_RPM.SelectedIndex = 0;
-            cbx_Cuerpo.SelectedIndex = 0;
-            cbx_Hz.SelectedIndex = 0;
-            cbx_Volts.SelectedIndex = 0;
+            cbx_Marca.Text = "";
+            cbx_HP.Text = "";
+            cbx_RPM.Text = "";
+            cbx_Cuerpo.Text = "";
+            cbx_Hz.Text = "";
+            cbx_Volts.Text = "";
         }
 
 

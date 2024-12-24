@@ -30,5 +30,12 @@ namespace Inventario_de_motores
             Motores_de_clientes motores_De_Clientes = new Motores_de_clientes();
             motores_De_Clientes.Show();
         }
+
+        private void btn_MotoresDomiciliarios_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Motores_domiciliarios motores_Domiciliarios = new Motores_domiciliarios();
+            motores_Domiciliarios.Show();
+        }
     }
 }

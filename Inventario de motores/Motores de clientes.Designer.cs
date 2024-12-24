@@ -117,6 +117,8 @@
             // lbl_Cliente
             // 
             this.lbl_Cliente.AutoSize = true;
+            this.lbl_Cliente.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Cliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Cliente.Location = new System.Drawing.Point(67, 168);
             this.lbl_Cliente.Name = "lbl_Cliente";
@@ -135,6 +137,8 @@
             // lbl_Marca
             // 
             this.lbl_Marca.AutoSize = true;
+            this.lbl_Marca.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Marca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Marca.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Marca.Location = new System.Drawing.Point(316, 168);
             this.lbl_Marca.Name = "lbl_Marca";
@@ -196,6 +200,8 @@
             // lbl_HP
             // 
             this.lbl_HP.AutoSize = true;
+            this.lbl_HP.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_HP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_HP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_HP.Location = new System.Drawing.Point(540, 168);
             this.lbl_HP.Name = "lbl_HP";
@@ -220,6 +226,8 @@
             // lbl_RPM
             // 
             this.lbl_RPM.AutoSize = true;
+            this.lbl_RPM.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_RPM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_RPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_RPM.Location = new System.Drawing.Point(779, 168);
             this.lbl_RPM.Name = "lbl_RPM";
@@ -242,6 +250,8 @@
             // lbl_Volts
             // 
             this.lbl_Volts.AutoSize = true;
+            this.lbl_Volts.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Volts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Volts.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Volts.Location = new System.Drawing.Point(311, 276);
             this.lbl_Volts.Name = "lbl_Volts";
@@ -264,6 +274,8 @@
             // lbl_Hz
             // 
             this.lbl_Hz.AutoSize = true;
+            this.lbl_Hz.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Hz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Hz.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Hz.Location = new System.Drawing.Point(546, 276);
             this.lbl_Hz.Name = "lbl_Hz";
@@ -294,6 +306,8 @@
             // lbl_Cuerpo
             // 
             this.lbl_Cuerpo.AutoSize = true;
+            this.lbl_Cuerpo.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Cuerpo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Cuerpo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Cuerpo.Location = new System.Drawing.Point(67, 277);
             this.lbl_Cuerpo.Name = "lbl_Cuerpo";
@@ -312,6 +326,8 @@
             // lbl_Cantidad
             // 
             this.lbl_Cantidad.AutoSize = true;
+            this.lbl_Cantidad.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Cantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Cantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Cantidad.Location = new System.Drawing.Point(774, 280);
             this.lbl_Cantidad.Name = "lbl_Cantidad";
@@ -353,7 +369,7 @@
             // 
             // btn_Imprimir
             // 
-            this.btn_Imprimir.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Imprimir.BackColor = System.Drawing.Color.White;
             this.btn_Imprimir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Imprimir.BackgroundImage")));
             this.btn_Imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_Imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -366,7 +382,7 @@
             // 
             // btn_ExportarPDF
             // 
-            this.btn_ExportarPDF.BackColor = System.Drawing.Color.Transparent;
+            this.btn_ExportarPDF.BackColor = System.Drawing.Color.White;
             this.btn_ExportarPDF.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_ExportarPDF.BackgroundImage")));
             this.btn_ExportarPDF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_ExportarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

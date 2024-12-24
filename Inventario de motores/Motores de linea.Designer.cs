@@ -295,7 +295,7 @@
             this.lbl_Cuerpo.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Cuerpo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Cuerpo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Cuerpo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbl_Cuerpo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_Cuerpo.Location = new System.Drawing.Point(42, 232);
             this.lbl_Cuerpo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Cuerpo.Name = "lbl_Cuerpo";
@@ -385,7 +385,7 @@
             // 
             // btn_Imprimir
             // 
-            this.btn_Imprimir.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Imprimir.BackColor = System.Drawing.Color.White;
             this.btn_Imprimir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Imprimir.BackgroundImage")));
             this.btn_Imprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_Imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -398,7 +398,7 @@
             // 
             // btn_ExportarPDF
             // 
-            this.btn_ExportarPDF.BackColor = System.Drawing.Color.Transparent;
+            this.btn_ExportarPDF.BackColor = System.Drawing.Color.White;
             this.btn_ExportarPDF.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_ExportarPDF.BackgroundImage")));
             this.btn_ExportarPDF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_ExportarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
