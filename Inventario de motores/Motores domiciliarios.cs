@@ -57,7 +57,7 @@ namespace Inventario_de_motores
                 Conexion.Open();
 
                 // Consulta SQL
-                string consultaSQL = "SELECT * FROM Motor_Domiciliario ORDER BY HP ASC";
+                string consultaSQL = "SELECT * FROM MotorDomiciliario ORDER BY HP ASC";
                 SqlCommand comando = new SqlCommand(consultaSQL, Conexion);
 
                 // Cargar datos en DataTable
@@ -152,7 +152,7 @@ namespace Inventario_de_motores
                 SqlCommand comandoSQL;
                 if (guardar == "Nuevo")
                 {
-                    comandoSQL = new SqlCommand("INSERT INTO Motor_Domiciliario (marca,hp,rpm,cantidad,volts,hz)" + "VALUES (@Marca,@HP,@RPM,@Cantidad,@Volts,@Hz)", Conexion);
+                    comandoSQL = new SqlCommand("INSERT INTO MotorDomiciliario (marca,hp,rpm,cantidad,volts,hz)" + "VALUES (@Marca,@HP,@RPM,@Cantidad,@Volts,@Hz)", Conexion);
                     comandoSQL.Parameters.AddWithValue("@Marca", marca);
                     comandoSQL.Parameters.AddWithValue("@HP", hp);
                     comandoSQL.Parameters.AddWithValue("@RPM", rpm);
@@ -165,7 +165,7 @@ namespace Inventario_de_motores
                 }
                 else if (guardar == "Modificar")
                 {
-                    comandoSQL = new SqlCommand("UPDATE Motor_Domiciliario SET marca=@Marca, hp=@HP, rpm=@RPM, cantidad=@Cantidad, volts=@Volts, hz=@Hz WHERE codigo=@Codigo", Conexion);
+                    comandoSQL = new SqlCommand("UPDATE MotorDomiciliario SET marca=@Marca, hp=@HP, rpm=@RPM, cantidad=@Cantidad, volts=@Volts, hz=@Hz WHERE codigo=@Codigo", Conexion);
                     comandoSQL.Parameters.AddWithValue("@Marca", marca);
                     comandoSQL.Parameters.AddWithValue("@HP", hp);
                     comandoSQL.Parameters.AddWithValue("@RPM", rpm);
@@ -225,7 +225,7 @@ namespace Inventario_de_motores
 
                     Conexion.Open();
                     SqlCommand comandoSQL;
-                    comandoSQL = new SqlCommand("DELETE FROM Motor_Domiciliario WHERE codigo = @Codigo", Conexion);
+                    comandoSQL = new SqlCommand("DELETE FROM MotorDomiciliario WHERE codigo = @Codigo", Conexion);
                     comandoSQL.Parameters.AddWithValue("@Codigo", codigo);
                     comandoSQL.ExecuteNonQuery();
                     Conexion.Close();
@@ -256,7 +256,7 @@ namespace Inventario_de_motores
                 string filtro = txt_Filtro.Text;
 
                 // Crea la consulta SQL con el filtro 
-                string consulta = "SELECT * FROM Motor_Domiciliario WHERE HP LIKE @filtro";
+                string consulta = "SELECT * FROM MotorDomiciliario WHERE HP LIKE @filtro";
                 SqlCommand comandoSQL = new SqlCommand(consulta, Conexion);
                 comandoSQL.Parameters.AddWithValue("@filtro", "%" + filtro + "%");
 
