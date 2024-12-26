@@ -471,6 +471,11 @@ namespace Inventario_de_motores
                 }
             }
         }
+
+        private void cbx_HP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

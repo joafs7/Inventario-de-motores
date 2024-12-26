@@ -223,6 +223,7 @@
             "0.5",
             "0.75",
             "1",
+            "1.5",
             "2",
             "3",
             "4",
@@ -245,6 +246,7 @@
             this.cbx_HP.Name = "cbx_HP";
             this.cbx_HP.Size = new System.Drawing.Size(194, 28);
             this.cbx_HP.TabIndex = 11;
+            this.cbx_HP.SelectedIndexChanged += new System.EventHandler(this.cbx_HP_SelectedIndexChanged);
             // 
             // txt_Cantidad
             // 
