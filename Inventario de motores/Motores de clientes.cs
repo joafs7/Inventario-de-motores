@@ -313,38 +313,59 @@ namespace Inventario_de_motores
             int y = 50; // Margen superior
             int rowHeight = 25; // Altura de las filas
             int colWidth = 100; // Ancho de las columnas
-            int maxRowsPerPage = (e.MarginBounds.Height - y) / rowHeight;
+            int tableWidth = dgv_Cliente.Columns.Count * colWidth; // Ancho total de la tabla
 
             System.Drawing.Font headerFont = new System.Drawing.Font("Arial", 10, FontStyle.Bold);
             System.Drawing.Font rowFont = new System.Drawing.Font("Arial", 9, FontStyle.Regular);
+            Pen blackPen = new Pen(Brushes.Black, 1); // Para dibujar líneas
 
-            // Dibujar los encabezados de columna
+            // Dibujar encabezados
+            e.Graphics.DrawRectangle(blackPen, x, y, tableWidth, rowHeight);
             for (int col = 0; col < dgv_Cliente.Columns.Count; col++)
             {
-                e.Graphics.DrawString(dgv_Cliente.Columns[col].HeaderText, headerFont, Brushes.Black, x + (col * colWidth), y);
+                e.Graphics.DrawString(dgv_Cliente.Columns[col].HeaderText, headerFont, Brushes.Black, x + (col * colWidth) + 5, y + 5);
+                e.Graphics.DrawLine(blackPen, x + (col * colWidth), y, x + (col * colWidth), y + rowHeight);
             }
-
             y += rowHeight;
 
-            // Dibujar las filas de datos
-            for (; currentRow < dgv_Cliente.Rows.Count; currentRow++)
+            // Dibujar filas de datos
+            while (currentRow < dgv_Cliente.Rows.Count)
             {
                 if (y + rowHeight > e.MarginBounds.Bottom)
                 {
                     e.HasMorePages = true;
-                    return; // Salir para continuar en la siguiente página
+                    return;
                 }
 
+                // Determinar el color de fondo según el valor de Hz
+                Brush backgroundBrush = Brushes.White; // Por defecto
+                if (dgv_Cliente.Rows[currentRow].Cells["Hz"].Value?.ToString() == "60 Hz")
+                {
+                    backgroundBrush = Brushes.LightGreen; // Color para 60 Hz
+                }
+
+                // Dibujar fondo de la fila
+                e.Graphics.FillRectangle(backgroundBrush, x, y, tableWidth, rowHeight);
+
+                // Dibujar celdas y texto
                 for (int col = 0; col < dgv_Cliente.Columns.Count; col++)
                 {
                     string cellValue = dgv_Cliente.Rows[currentRow].Cells[col].Value?.ToString() ?? "";
-                    e.Graphics.DrawString(cellValue, rowFont, Brushes.Black, x + (col * colWidth), y);
+                    e.Graphics.DrawString(cellValue, rowFont, Brushes.Black, x + (col * colWidth) + 5, y + 5);
+
+                    // Dibujar líneas verticales entre columnas
+                    e.Graphics.DrawLine(blackPen, x + (col * colWidth), y, x + (col * colWidth), y + rowHeight);
                 }
 
+                // Dibujar línea vertical final
+                e.Graphics.DrawLine(blackPen, x + tableWidth, y, x + tableWidth, y + rowHeight);
+
+                currentRow++;
                 y += rowHeight;
             }
 
             e.HasMorePages = false;
+            currentRow = 0;
         }
 
         private void btn_ExportarPDF_Click(object sender, EventArgs e)
@@ -371,7 +392,7 @@ namespace Inventario_de_motores
                 documento.Open();
 
                 // Título
-                documento.Add(new Paragraph("Motores de Clientes"));
+                documento.Add(new Paragraph("Motores de Línea"));
                 documento.Add(new Paragraph(" ")); // Espacio en blanco
 
                 PdfPTable tabla = new PdfPTable(dgv_Cliente.Columns.Count);
@@ -382,7 +403,7 @@ namespace Inventario_de_motores
                 {
                     PdfPCell celda = new PdfPCell(new Phrase(columna.HeaderText))
                     {
-                        BackgroundColor = BaseColor.LIGHT_GRAY,
+                        BackgroundColor = BaseColor.ORANGE,
                         HorizontalAlignment = Element.ALIGN_CENTER
                     };
                     tabla.AddCell(celda);
@@ -393,10 +414,22 @@ namespace Inventario_de_motores
                 {
                     if (!fila.IsNewRow)
                     {
+                        BaseColor colorFondo = BaseColor.WHITE; // Color por defecto
+
+                        // Comprobar el valor de Hz y cambiar el color de fondo si es 60
+                        if (fila.Cells["Hz"].Value?.ToString() == "60 Hz")
+                        {
+                            colorFondo = BaseColor.GREEN; // Color para 60 Hz
+                        }
+
                         foreach (DataGridViewCell celda in fila.Cells)
                         {
                             string textoCelda = celda.Value?.ToString() ?? "";
-                            tabla.AddCell(new Phrase(textoCelda));
+                            PdfPCell pdfCelda = new PdfPCell(new Phrase(textoCelda))
+                            {
+                                BackgroundColor = colorFondo
+                            };
+                            tabla.AddCell(pdfCelda);
                         }
                     }
                 }
