@@ -69,7 +69,7 @@
             this.lbl_Usuario.Location = new System.Drawing.Point(646, 196);
             this.lbl_Usuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Usuario.Name = "lbl_Usuario";
-            this.lbl_Usuario.Size = new System.Drawing.Size(151, 48);
+            this.lbl_Usuario.Size = new System.Drawing.Size(167, 48);
             this.lbl_Usuario.TabIndex = 1;
             this.lbl_Usuario.Text = "Usuario";
             // 

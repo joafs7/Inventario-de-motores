@@ -67,7 +67,7 @@ namespace Inventario_de_motores
                 Conexion.Open();
 
                 // Consulta SQL
-                string consultaSQL = "SELECT * FROM MotorDeCliente ORDER BY HP ASC";
+                string consultaSQL = "SELECT * FROM MotorDeCliente ORDER BY HP ASC, RPM ASC ";
                 SqlCommand comando = new SqlCommand(consultaSQL, Conexion);
 
                 // Cargar datos en DataTable
