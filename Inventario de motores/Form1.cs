@@ -19,10 +19,7 @@ namespace Inventario_de_motores
         public Form1()
         {
             InitializeComponent();
-            // Establecer el tamaño dinámico para un TextBox
-            txt_Usuario.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txt_Contrasena.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            lbl_Usuario.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            
        
         }
         
